@@ -11,6 +11,8 @@ import td1.paires.Paire;
 public class Commande {
     private List<Paire<Produit, Integer>> lignes;
 
+    private static final Function<Paire<Produit,Integer>, String> FormateurLigne = p -> String.format("%s x%d\n",  p.fst(), p.snd());
+
     public Commande() {
         this.lignes = new ArrayList<>();
     }
@@ -83,5 +85,6 @@ public class Commande {
         str.append(String.format("Total : %10.2f", c.cout(calculLigne)));
         return str.toString();
     }
+
 
 }
