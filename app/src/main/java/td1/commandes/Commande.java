@@ -11,6 +11,7 @@ import td1.paires.Paire;
 public class Commande {
     private List<Paire<Produit, Integer>> lignes;
 
+
     private static final Function<Paire<Produit,Integer>, String> FormateurLigne = p -> String.format("%s x%d\n",  p.fst(), p.snd());
 
     public Commande() {
@@ -26,15 +27,13 @@ public class Commande {
         return lignes;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder str = new StringBuilder();
-        str.append("Commande\n");
-        for (Paire<Produit, Integer> ligne : lignes) {
-            str.append(String.format("%s x%d\n", ligne.fst(), ligne.snd()));
-        }
-        return str.toString();
-    }
+    /*
+     @Override
+      public String toString() {
+      return lignes.stream().map().collect();
+      }
+
+     */
 
     /**
      * cumule les lignes en fonction des produits
