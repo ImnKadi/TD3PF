@@ -52,32 +52,46 @@ public class DAO {
     /**
      * ensemble des différents produits commandés
      */
+    /*public Set<Produit> produits() {
+      Set<Produit> res = new HashSet<>();
+      for(Commande c : commandes){
+          for(Paire<Produit, Integer> p : c.lignes());
+         // res.add(p);
+      }
+      return res;
+    }
+    */
+
+
+    /**
+     * ensemble des différents produits commandés
+     */
     public Set<Produit> produits() {
         Set<Produit> res = new HashSet<>();
         for(Commande c : commandes){
-            for(Paire<Produit, Integer> p : c.lignes()){
-
+            for(Paire<Produit, Integer> p : c.lignes());
         }
+
         return res;
+
     }
 
-    /**
-     * liste des commandes vérifiant un prédicat
-     */
-     public List<Commande> selectionCommande(Predicate<Commande> p) {
-
-       }
 
 
     /**
      * liste des commandes dont au moins une ligne vérifie un prédicat
      */
-    public List<Commande> selectionCommandeSurExistanceLigne(Predicate<Paire<Produit,Integer> p) {
-   //  List<Commande> res = new ArrayList<>();
-   //  for(Commande c : commandes){
-     }
-   //  return res;
+    public List<Commande> selectionCommandeSurExistanceLigne(Predicate<Paire<Produit,Integer>> p){
+            List<Commande> res = new ArrayList<>();
+            for (Commande c : commandes) {
+                for (Paire<Produit, Integer> ligne : c.lignes()) {
+                    if (p.test(ligne)) ;
+                    res.add(c);
+                }
+            }
+            return res;
     }
+
 
     /**
      * ensemble des différents produits commandés vérifiant un prédicat
