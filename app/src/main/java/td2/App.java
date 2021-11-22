@@ -77,16 +77,21 @@ public class App {
     public static final Function<Etudiant, Stream<Matiere>> matieresE = e -> matieresA.apply(e.annee());
 
     // matières coefficientées d'un étudiant (version Entry)
-    //public static final Function<Etudiant, Stream<Entry<Matiere, Integer>>> matieresCoefE_ = e -> e.ues().stream().flatMap(ue -> ue.cts().entrySet().stream());
-
-    
+    //public static final Function<Etudiant, Stream<Entry<Matiere, Integer>>> matieresCoefE_ = e -> e.ues().stream().flatMap(ue -> ue.ects().entrySet().stream());
 
 
+     // transformation d'une Entry en une Paire
+     public static final Function<Entry<Matiere, Integer>, Paire<Matiere, Integer>> entry2paire = e -> new Paire<>(e.getKey(), e.getValue());
+     
+     
+     // accumulateur pour calcul de la moyenne
+     // ((asomme, acoefs), (note, coef)) -> (asomme+note*coef, acoef+coef)
+     // public static final BinaryOperator<Paire<Double, Integer>> accumulateurMoyenne 
+
+    // zero (valeur initiale pour l'accumulateur)
+    public static final Paire<Double, Integer> zero = new Paire<>(0.0, 0);
 
 
-
-
-    //
     // QUESTION 2
     //
 
