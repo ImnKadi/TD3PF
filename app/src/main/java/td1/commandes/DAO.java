@@ -4,7 +4,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 import java.util.ArrayList;
 
 import static td1.commandes.Categorie.*;
@@ -27,7 +26,6 @@ public class DAO {
             Produit masques = new Produit("Masques", 25.0, REDUIT);
             Produit gel = new Produit("Gel", 5.0, REDUIT);
             Produit tournevis = new Produit("Tournevis", 4.5, NORMAL);
-            //
             Commande c1 = new Commande()
                 .ajouter(camembert, 1)
                 .ajouter(yaourts, 6);

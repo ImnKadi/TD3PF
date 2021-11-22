@@ -10,7 +10,6 @@ import java.util.Set;
 import java.util.Map.Entry;
 import java.util.function.Function;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import td2.universite.Annee;
 import td2.universite.Etudiant;
@@ -83,13 +82,13 @@ public class App {
      // transformation d'une Entry en une Paire
      public static final Function<Entry<Matiere, Integer>, Paire<Matiere, Integer>> entry2paire = e -> new Paire<>(e.getKey(), e.getValue());
      
-     
-     // accumulateur pour calcul de la moyenne
-     // ((asomme, acoefs), (note, coef)) -> (asomme+note*coef, acoef+coef)
-     // public static final BinaryOperator<Paire<Double, Integer>> accumulateurMoyenne 
+
 
     // zero (valeur initiale pour l'accumulateur)
     public static final Paire<Double, Integer> zero = new Paire<>(0.0, 0);
+
+    //public static final Function<Etudiant, List<Paire<Double, Integer>>> notesPonderees = e -> matieresCoefE.apply(e).map(p -> new Paire<>(e.notes().get(p.fst(), p.snd())).collect(Collectors.toList()));
+
 
 
     // QUESTION 2
@@ -181,6 +180,8 @@ public class App {
         filtragePredicatif(conditionsAcces, clients).forEach(x -> System.out.println(x));
         filtragePredicatif(conditionsAllegees, clients).forEach(x -> System.out.println(x));
     }
+
+
 
     //
     // QUESTION 3
