@@ -76,6 +76,9 @@ public class App {
     // matières d'un étudiant
     public static final Function<Etudiant, Stream<Matiere>> matieresE = e -> matieresA.apply(e.annee());
 
+    // matières coefficientées d'un étudiant (version Entry)
+    //public static final Function<Etudiant, Stream<Entry<Matiere, Integer>>> matieresCoefE_ = e -> e.ues().stream().flatMap(ue -> ue.cts().entrySet().stream());
+
     
 
 
