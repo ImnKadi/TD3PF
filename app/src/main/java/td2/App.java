@@ -74,7 +74,7 @@ public class App {
 
 
     // matières d'un étudiant
-    public static final Function<Etudiant, Stream<Matiere>> matieresE = e -> e.ues().stream().flatMap(ue -> ue.ects().keySet().stream());
+    public static final Function<Etudiant, Stream<Matiere>> matieresE = e -> matieresA.apply(e.annee());
 
     
 
