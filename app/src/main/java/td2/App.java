@@ -10,7 +10,8 @@ import java.util.Set;
 import java.util.Map.Entry;
 import java.util.function.Function;
 import java.util.function.Predicate;
-
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import td2.universite.Annee;
 import td2.universite.Etudiant;
 import td2.universite.Matiere;
@@ -67,6 +68,20 @@ public class App {
         System.out.println(l2s.convert(l1));
         System.out.println(m2s.convert(m1));
     }
+
+    // matières d'une année
+    public static final Function<Annee, Stream<Matiere>> matieresA = a -> a.ues().stream().flatMap(ue -> ue.ects().keySet().stream());
+
+
+    // matières d'un étudiant
+    public static final Function<Etudiant, Stream<Matiere>> matieresE = e -> e.ues().stream().flatMap(ue -> ue.ects().keySet().stream());
+
+    
+
+
+
+
+
 
     //
     // QUESTION 2
